@@ -1,1 +1,3 @@
-module.exports = {};
+module.exports = {
+  BookRepository: require("../repository/booking-repository"),
+};
