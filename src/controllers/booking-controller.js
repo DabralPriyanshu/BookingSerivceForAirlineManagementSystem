@@ -8,11 +8,16 @@ class BookingController {
   constructor() {}
   async sendMsg(req, res) {
     const channel = await createChannel();
-    publishMessage(
-      channel,
-      REMINDER_BINDING_KEY,
-      JSON.stringify({ msg: "success" }),
-    );
+    const payload = {
+      data: {
+        subject: "this is a notification ",
+        content: "hey pal",
+        recipientEmail: "priyanshudabral07@gmail.com",
+        notificationTime: "2026-01-23T12:25:00",
+      },
+      service: "CREATE_TICKET",
+    };
+    publishMessage(channel, REMINDER_BINDING_KEY, JSON.stringify(payload));
     return res.status(200).json({
       data: {},
       err: {},
